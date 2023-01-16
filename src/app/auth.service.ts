@@ -12,8 +12,8 @@ export class AuthService {
  
   
   login(email: string, password: string) {
-    const loginCredentials ={email,password};
-    console.log('login creadentials',
+    const loginCredentials ={email,  password};
+    console.log('login credentials',
     loginCredentials);
     return of (loginCredentials);
   } 
@@ -28,21 +28,18 @@ console.log('user did logout successfull');
    return this.user$.asObservable();
   }
   register(user:any){
-   //make a api call to save user in db
-   //update the user subject
-   this.setUser(user);
+    this.setUser(user);
     console.log('registerd user successfully',user);
     return of(user);
   }
-  setUser(user: any) {
-    throw new Error('Method not implemented.');
-  }
- private server(user){ 
-  this.user$.next(user);}
-  
- 
-  
-  
- 
+   //make a api call to save user in db
+   //update the user subje
+
+
+
+ private setUser (user){ 
+  this.user$.next(user);
+
+}
 }
  

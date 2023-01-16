@@ -41,7 +41,7 @@ passwordsMatch(control:FormControl){
     const user= this.userForm.getRawValue();
      this.authService
      .register(user)
-     .subscribe(s => this.router.navigate(['/login']));
+     .subscribe(s => this.router.navigate(['/']));
   }
 
 
