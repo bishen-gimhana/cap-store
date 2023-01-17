@@ -11,6 +11,7 @@ import { ProductsComponent } from './products/products/products.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule,
     CsMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
     
     
   ],
