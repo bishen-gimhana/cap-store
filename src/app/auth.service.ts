@@ -12,7 +12,7 @@ export class AuthService {
  
   
   login(email: string, password: string) {
-    const loginCredentials ={email,  password};
+    const loginCredentials = {email,  password};
     console.log('login credentials',
     loginCredentials);
     return of (loginCredentials);
