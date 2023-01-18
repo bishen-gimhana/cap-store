@@ -1,0 +1,16 @@
+{
+"version":"2.0.0",
+"task":[{
+   "type":"npm",
+   "script":"server:watch",
+   "problemMatcher":[]
+
+},
+{
+    "type":"npm",
+    "script":"server",
+    "isBackground":true,
+    
+}
+]
+}

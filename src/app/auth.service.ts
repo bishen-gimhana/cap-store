@@ -11,14 +11,31 @@ export class AuthService {
   
  private user$ = new Subject<User>();
  private apiUrl ='/api/auth/';
- constructor(private httpCilent: HttpClient){}
+ constructor(private httpClient: HttpClient){}
  
   
   login(email: string, password: string) {
     const loginCredentials = {email,  password};
     console.log('login credentials',
     loginCredentials);
-    return of (loginCredentials);
+    return this.httpClient.post<User>(`${this.apiUrl}logoin`,loginCredentials).pipe(
+      
+      switchMap(foundUser =>{
+        
+       this.setUser(foundUser); 
+        console.log(`user found`,foundUser);
+        return of (foundUser);       
+      }
+      ),
+
+      catchError(e=>{
+        console.log(`Your loging details could not be verified. please try again`, e);
+        return throwError(`Your loging details could not be verified. please try again`
+        );
+      })
+    );
+      
+    
   } 
 logout(){
 // remove user from subject
@@ -31,7 +48,7 @@ console.log('user did logout successfull');
    return this.user$.asObservable();
   }
   register(user:any){
-  return this.httpCilent.post<User>(`${this.apiUrl}register`,user).pipe
+  return this.httpClient.post<User>(`${this.apiUrl}register`,user).pipe
   (
      switchMap(savedUser=>{
      this.setUser(savedUser);
