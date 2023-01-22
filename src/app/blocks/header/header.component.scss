@@ -1,0 +1,24 @@
+
+    a {
+        margin :2px
+        }
+  
+.log{
+    background-image: uri('../../../assests/logo.png');
+    height:50px; 
+    width: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right:2px ;
+    margin: 0px;
+    padding: 0px;
+    
+    
+};
+.header-spacer {
+    flex:1 1 auto;
+}
+.mat-icon{
+    vertical-align:middle;
+    margin: 0 5px;
+}

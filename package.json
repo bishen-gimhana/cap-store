@@ -3,15 +3,19 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "serve": "ng serve",
     "start:server": "node server/index.js",
-    "server:watch": "nodemon server",
-    "start": "ng serve",
+    "server": "nodemon server",
+    "client":"ng serve --port 4230 -o",
+    "start": "node server",
     "build": "ng build",
+    "build:watch":"ng build --watch",
     "build:prod": "npm run build -- --prod",
+    "postinstall":"npm run build -- --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "debug":"node --nolazy --inspect-brk=9229 server"
+    "debug": "node --nolazy --inspect-brk=9229 server"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +24,7 @@
     "@angular/common": "~7.2.0",
     "@angular/compiler": "~7.2.0",
     "@angular/core": "~7.2.0",
+    "@angular/flex-layout": "^7.0.0-beta.24",
     "@angular/forms": "~7.2.0",
     "@angular/material": "^7.3.7",
     "@angular/platform-browser": "~7.2.0",
@@ -36,9 +41,13 @@
     "express-async-handler": "^1.2.0",
     "hammerjs": "^2.0.8",
     "helmet": "^6.0.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.4",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
     "rxjs": "~6.3.3",
     "sass": "^1.57.1",
     "tslib": "^1.9.0",
@@ -63,6 +72,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.2.2"
+    "typescript": "^3.2.4"
   }
 }

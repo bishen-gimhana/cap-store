@@ -68,7 +68,7 @@
             "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
-            "production": {
+            "production": { 
               "browserTarget": "cap-store:build:production"
             }
           }

@@ -1,4 +1,3 @@
-const { MatButtonToggleModule } = require('@angular/material');
 const mongoose = require('mongoose');
 const util = require ('util');
 const debug = require('debug')('express-mongoose-es6-rest-api:index');
@@ -14,8 +13,8 @@ db.once('open', ()=>{
    console.log(`connected to the database:${mongoUri}`); 
 });
 
-db.on('erro',()=>{
-    throw new Error (`unable to conncet to the database:${mongoUri}`);
+db.on('error',() => {
+    throw new Error (`unable to connect to the database:${mongoUri}`);
 });
 
 if (config.mongo.isDebug){
@@ -24,5 +23,5 @@ if (config.mongo.isDebug){
  });
 
 }
-module.expoerts =db;
+module.exports =db;
 

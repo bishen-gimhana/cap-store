@@ -6,7 +6,7 @@ const bodyPasser =require('body-Parser');
 const cors = require('cors');
 const helmet= require('helmet');
 const routes = require('../routes');
-
+const passport =require('../middleware/passport');
 
 //
 const app = express();
@@ -25,6 +25,8 @@ app.use(bodyPasser.urlencoded({extened:true}));
 app.use(helmet());
 
 app.use(cors());
+
+app.use(passport.initialize()); 
 
 app.use('/api/',routes);
 

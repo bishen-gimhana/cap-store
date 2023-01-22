@@ -10,5 +10,6 @@ module.exports={
      isDebug:envVars.MONGOOSE_DEBUG
 
 
-}
+},
+jwtSecret: envVars.JWT_SECRET
 };

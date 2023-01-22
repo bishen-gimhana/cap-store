@@ -16,7 +16,7 @@ async function insert(user){
 async function getUserByEmailIdAndPassword(email,password){
     let user = await User.findOne({ email});
     
-    if(isUserValid(user, password,user.hashPassword)){
+    if (isUserValid(user, password,user.hashPassword)){
   user = user.toObject();
   delete user.hashedPassword;
   return user;
@@ -26,8 +26,21 @@ async function getUserByEmailIdAndPassword(email,password){
   
    }
   }
+  async function getUserById(id){let user = await User.findById(id);
+  if(user){
+  user = user.toObject();
+  delete user. hashedPassword;
+  return user;
+
+  } else{
+    return null;
+
+  
+  
+  }
+}
   function isUserValid(user, password,hashedPassword){
-   return user && bcrypt.compareSunc(password,hashedPassword);
+   return user && bcrypt.compareSync(password,hashedPassword);
   }
 
 
@@ -35,5 +48,6 @@ async function getUserByEmailIdAndPassword(email,password){
 
 module.exports={
     insert ,
-    getUserByEmailIdAndPassword
+    getUserByEmailIdAndPassword,
+    getUserById
 };
