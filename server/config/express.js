@@ -1,36 +1,60 @@
-const express= require('express')
-const path =require('path');
+const express = require('express')
+const path = require('path');
 const config = require('./config');
 const logger = require('morgan');
-const bodyPasser =require('body-Parser');
+const bodyParser = require('body-parser');
 const cors = require('cors');
-const helmet= require('helmet');
+const helmet = require('helmet');
 const routes = require('../routes');
-const passport =require('../middleware/passport');
+const passport = require('../middleware/passport');
+const HttpError = require("http-errors");
 
-//
+//get app
 const app = express();
-//
-if (config.env === 'development'){
-  app.use(logger('dev'));
+
+// logger
+if(config.env === 'development'){
+    app.use(logger('dev'));
 }
-const distDir = path.join(__dirname, '../../dist');
-app.use(express.static(distDir));
 
+//get dist folder
+//const distDir = path.join(__dirname,'../../dist');
 
-app.use(bodyPasser.json());
-app.use(bodyPasser.urlencoded({extened:true}));
+//use dist folder as hosting folder by express
+//app.use(express.static(distDir));
 
+//parsing from api
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
+//secure apps http
 app.use(helmet());
 
+//allow cors
 app.use(cors());
 
-app.use(passport.initialize()); 
+// authenticate
+app.use(passport.initialize());
 
-app.use('/api/',routes);
+// api router localhost:4050/api
+app.use('/api/', routes);
 
-app.get('*',(req,res) => res.sendFile(path.join(distDir,'index.html')));
+// serve the index.html
+//app.get('*', (req, res) => res.sendFile(path.join(distDir,
+//'index.html' )));
 
-module.exports=app;
+// catch the 404 and forward to error handler
+app.use((req, res, next)=>{
+    const error = new HttpError(404);
+    return next(error);
+});
 
+// error handler, stack trace
+app.use((err, req, res, next)=>{
+    res.status(err.status || 500).json({
+        message: err.message
+    });
+    next(err);
+});
+
+module.exports = app;

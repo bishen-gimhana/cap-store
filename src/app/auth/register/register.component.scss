@@ -1,12 +1,37 @@
+.register-body{
+    background-size: cover;
+    height: 950px;
+}
 .register-card{
-   max-width: 800px;
-   min-width: 150px;
-   margin: 10% auto;
+    width: 420px;
+    height: 410px;
+    background-color: rgb(137, 143, 148);
+    border-radius: 15px;
+    top: 130px;
+    left: 80px;
+    opacity: 85%;
+}
 
+.register-card-title{
+    padding-left: 140px;
+}
+
+
+
+.register-button{
+    background-color: rgb(49, 59, 61);
+}
+
+.register-login-link{
+    margin-left: 15px;
+}
+.link{
+    color: rgb(61, 141, 166);
 }
 
 .full-width{
     width: 100%;
-    
-
+}
+.email-icon{
+    transform: scale(0.7);
 }

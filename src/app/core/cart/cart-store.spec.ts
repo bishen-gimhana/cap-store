@@ -1,44 +1,45 @@
+import { CartStore } from './cart-store';
 import { TestBed } from '@angular/core/testing';
+import { initialState } from './cart-state';
 import { CartItem } from './cart-item';
-import { intialState } from './cart-state';
-import {  CartStore } from './cart-store';
 
 describe('CartStore', () => {
-  let CartStore : CartStore;
+  let cartStore: CartStore;
 
-  beforeEach(()=> {}
-  TestBed.configureTestingModule({
-    providers:[CartStore]})
-  );
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [CartStore]
+    });
 
-  CartStore = TestBed.get(CartStore);
+    cartStore = TestBed.get(CartStore);
+  });
 
   it('should create an instance', () => {
-    expect(new CartStore()).toBeTruthy();
+    expect(cartStore).toBeTruthy();
   });
-  it('can add item into cart state',()=>{
-  const currentState = intialState;
-  expect(currentState.cartItems.length)
-  .toBe(0);
 
-  const cartItem : CartItem = {
-    productId: 1,
-    imgUrl:'img/apple',
-    price: 2,
-    quantity: 10,
-    itemTotal:20,
-    name: 'apple'
-  };
-  CartStore.addCartItem(cartItem);
-  const expectedState = {
-    cartItem: [cartItem]
-  };
+  it('can add item into cart state', () => {
+    // Arrange
+    const currentState = initialState;
+    expect(currentState.cartItems.length).toBe(0);
 
-  expect(CartStore.state).toEqual
-  (expectedState);
+    const cartItem: CartItem = {
+      id: 1,
+      imgUrl: 'img/apple',
+      price: 2,
+      quantity: 10,
+      itemTotal: 20,
+      name: 'apple'
+    };
 
+    // Act
+    cartStore.addCartItem(cartItem);
 
-});
+    const expectedState = {
+      cartItems: [cartItem]
+    };
 
-
+    // Assert
+    expect(cartStore.state).toEqual(expectedState);
+  });
 });

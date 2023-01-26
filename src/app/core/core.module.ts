@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { createSkipSelf } from '@angular/compiler/src/core';
-import { throwIfAlreadyLoaded } from './untils/module-import-guard';
+import { throwIfAlreadyLoaded } from './utils/module-import-guard';
 import { AuthHeaderInterceptorService } from './interceptors/auth-header-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
+import { HttpErrorInterceptorService } from './interceptors/http-error-interceptor.service';
 
 @NgModule({
   declarations: [],
@@ -14,6 +15,11 @@ import { SharedModule } from '../shared/shared.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHeaderInterceptorService,
+      multi:true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
       multi:true
     }
       

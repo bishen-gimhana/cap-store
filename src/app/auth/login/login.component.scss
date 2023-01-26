@@ -1,9 +1,37 @@
-.login-card{
-    width:400px ;
-    margin:10% auto
-   
+.login-body{
+    background-size: cover;
+    height:1000px;
 }
-    .full-width{
-        width: 100%;
-        
+
+.login-card{
+    width: 400px;
+    height: 250px;
+    background-color: rgb(218, 233, 233);
+    border-radius: 15px;
+    margin-left: 910px;
+    top: 170px;
+    opacity:90%;
+}
+
+.login-card-title{
+    padding-left: 148px;
+    padding-bottom: 10px;
+}
+
+.login-button{
+    background-color: rgb(100, 109, 118);
+}
+.login-register-link{
+    margin-left: 15px;
+}
+.link{
+    color: rgb(61, 141, 166);
+}
+
+.email-icon{
+    transform: scale(0.7);
+}
+
+.full-width{
+    width: 100%;
 }

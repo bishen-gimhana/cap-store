@@ -1,69 +1,59 @@
-<mat-card class="login-card">
- <mat-card-header>
-  <mat-card-title>Login</mat-card-title>
- </mat-card-header>
- <mat-card-content>
-  <form>
-    <table cellspacing="0" 
-    class="full-width"></table> 
-      <tr>
-      <td>
-        <mat-form-field
-        class="full-width" >
-          <input 
-           name="email"
-           [(ngModel)]="email" 
-           matInput 
-           placeholder="Email" 
-           required
-           type="email"
-          
-          />
-        </mat-form-field>
-        
-      </td>
-      </tr>
-    
-    
-    
-    <tr>
-    <td> 
-      <mat-form-field >
-      <input 
-       name="password"
-       [(ngModel)]="password" 
-       matInput 
-       placeholder="Password" 
-       required
-       type="password"
+<body class="login-body" background="../../../assets/wp2759243-new-era-iphone-wallpaper (1).jpg">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title class="login-card-title">
+        <u>Login</u>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+        <table cellspacing="0" class="full-width">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <input 
+                name ="email" 
+                [(ngModel)]="email" 
+                matInput placeholder="Email" 
+                required 
+                type="email"/>
+                <mat-icon matSuffix class="email-icon">email</mat-icon>
+               </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <input 
+                name ="password" 
+                [(ngModel)]="password" 
+                placeholder="Password" 
+                required 
+                matInput [type]="hide ? 'password' : 'text'"/>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+               </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-error *ngIf="error">{{error | async}}</mat-error>
+            </td>
+          </tr>
+        </table>
       
-      />
-
-    </mat-form-field>
-  </td>
-    </tr>
-    <td>
-      <mat-error *ngIf="error">{{ error |async}}</mat-error>
-    </td>
-
-  </table>
-    
-  
-     
-     </form>
-     </mat-card-content>    
-     <mat-card-actions>
-     
-        <button  class="full-width"mat-raised-button color= "primary"(click)="login()"
-        [tabIndex]="0">Login</button>
-      <div style="margin-top: 2em">
-        <span>
-          New to cap store
-          <a [routerLink]="['auth/register']">Sing up</a>
-          here.
-        </span>
-      </div>
-    
       
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button 
+      (click)="login()" class="login-button" 
+      [tabIndex]=0>Login</button>
+      <span class="login-register-link">
+        New to Medicine-Mart ? 
+        <a [routerLink] = "['/auth/register']" class="link">Sign up</a> here.
+      </span>
     </mat-card-actions>
-</mat-card>
+  </mat-card>
+</body>

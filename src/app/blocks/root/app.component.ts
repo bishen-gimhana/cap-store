@@ -1,38 +1,33 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { merge, Observable, Subscription } from 'rxjs';
 import { AuthService } from '../../core/auth/auth.service';
-import { Router } from "@angular/router";
-import { User } from "../../core/user";
-import { Subscription } from "rxjs";
-import { Observable } from 'rxjs';
+import { User } from '../../core/user';
 
 @Component({
   selector: 'pm-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy, OnInit {
-  user: Observable<User>;
-  userSubscription: Subscription;
+export class AppComponent implements  OnInit{
+  user$: Observable<User>;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router){}
+
+  ngOnInit(): void {
+    this.user$ = merge(this.authService.findMe(), this.authService.user);
    
   }
-  ngOnInit(): void {
-    this.user = this.authService.user;
-   this.userSubscription= this.authService
-   .findMe()
-   .subscribe(user => (this.user = user));
 
-  }
+  
 
-  logout() {
+  logout(){
     this.authService.logout();
     this.router.navigate(['/']);
   }
 
-  ngOnDestroy(): void {
-    if (this.userSubscription) {
-      this.userSubscription.unsubscribe();
-    }
-  }
+
+
+  
+
 }

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CanActivate } from '@angular/router/src/utils/preactivation';
+import { AuthGuardService } from '@core/auth/auth-guard.service';
 
 const routes: Routes = [
 
@@ -11,6 +13,7 @@ const routes: Routes = [
  
   {
     path: 'products',
+    pathMatch: 'full',
     loadChildren: './products/products.module#ProductsModule'
 
   },
@@ -18,6 +21,11 @@ const routes: Routes = [
    path:'auth',
    loadChildren:'./auth/auth.module#AuthModule'
 
+  },
+  {
+    path:'cart',
+    loadChildren:'./cart/cart.module#CartModule',
+    canActivate: [AuthGuardService]
   }
 
   
