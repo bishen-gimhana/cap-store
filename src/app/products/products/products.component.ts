@@ -47,5 +47,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.dataSource.paginator = this.paginator;
     this.dataSource.data = products;
   }
+  slides = [
+    {'image': 'assets/NEW_ERA_Brand_Banner (1).png'}, 
+    {'image': 'assets/NE NEW ARRIVAL 02 - CATEGORY BANNER (wo CTA).jpg'},
+    {'image': 'assets/NOS_Homepage_Banner3_1440x.webp'}, 
+    {'image': 'assets/NEW-ERA-BANNER.webp'}, 
+    {'image': 'assets/HomepageBanner_W1920_700px_1440x.webp'}
+  ];
   
 }
