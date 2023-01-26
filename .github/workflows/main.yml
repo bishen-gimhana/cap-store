@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /root/New-Project
+            cd /root/cap-store
             git pull
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
